@@ -1,7 +1,5 @@
 # Motors-Control
-(Motors controled using Arduino)
-
-This folder includes:
+Motors controled using Arduino. This folder includes:
 1. DC motor control folder
 2. Servo motor control folder
 3. Stepper motor control folder
