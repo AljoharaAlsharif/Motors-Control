@@ -1,0 +1,51 @@
+#include <Stepper.h>
+ 
+int Direction = 1;
+int Speed = 0;
+const int button = 4; 
+const int pot = A0;
+Stepper stepper(20, 8, 9, 10, 11);
+ 
+void setup()
+{
+  pinMode(button, INPUT_PULLUP);
+}
+ 
+void loop()
+{
+  if (digitalRead(button) == 0)  // Button is pressed
+    if (debounce())
+    {
+      Direction *= -1;  // reverse direction
+      while (debounce()) ;  // Button released
+    }
+ 
+  // Potentiometer value
+  int val = analogRead(pot);
+ 
+  // map digital value from [0, 1023] to [5, 100]
+  if ( Speed != map(val, 0, 1023, 5, 100) ){ 
+    // if the speed was changed
+    Speed = map(val, 0, 1023, 5, 100);
+    // set the speed of the motor
+    stepper.setSpeed(Speed);
+   }
+ 
+  // move the stepper motor
+  stepper.step(Direction);
+}
+ 
+// Button debounce function
+bool debounce()
+{
+  byte count = 0;
+  for(byte i = 0; i < 5; i++) {
+    if (digitalRead(button) == 0)
+      count++;
+    delay(10);
+  }
+  if(count > 2)  
+    return 1;
+  else           
+    return 0;
+}
