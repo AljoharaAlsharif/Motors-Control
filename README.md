@@ -6,7 +6,5 @@ This folder includes:
 2. Servo motor control folder
 3. Stepper motor control folder
 
-Inside each motor folder you'll find:
-1. The circuit connections (.png)
-2. The Arduino code (.txt) 
+Inside each motor folder you'll find the circuit connections and arduino code.
 
