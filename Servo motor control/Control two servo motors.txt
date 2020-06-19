@@ -1,0 +1,69 @@
+//control two servo motors
+#include <Servo.h>
+
+int pos = 0; 
+Servo servo1;
+Servo servo2;
+
+void setup()
+{
+  servo1.attach(9);
+  servo2.attach(10);
+}
+
+void loop()
+{
+  // Both servos: sweep from 0 to 180 degrees
+  for (pos = 0; pos <= 180; pos += 1) {
+    servo1.write(pos);
+    servo2.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  // Both servos: sweep from 180 to 0 degrees
+  for (pos = 180; pos >= 0; pos -= 1) {
+    servo1.write(pos);
+    servo2.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  //delay for 1 second
+  delay(1000);
+  
+  // Servo1: sweep from 0 to 180 degrees
+  for (pos = 0; pos <= 180; pos += 1) {
+    servo1.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  // Servo1: sweep from 180 to 0 degrees
+  for (pos = 180; pos >= 0; pos -= 30) {
+    servo1.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  //delay for 1 second
+  delay(1000);
+  
+  // Servo2: sweep from 0 to 180 degrees
+  for (pos = 0; pos <= 180; pos += 1) {
+    servo2.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  // Servo2: sweep from 180 to 0 degrees
+  for (pos = 180; pos >= 0; pos -= 30) {
+    servo2.write(pos);
+    // wait 15 ms for servo to reach the position
+    delay(15);
+  }
+  
+  //delay for 1 second
+  delay(1000);
+ 
+}
